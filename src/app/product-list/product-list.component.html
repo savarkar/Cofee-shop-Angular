@@ -1,0 +1,14 @@
+<div class="container">
+    <div class="row my-4">
+        <h3>Brands of coffee</h3>
+    </div>
+    <div class="product-list" >
+        <div class="product" *ngFor="let brands of coffeeBrands.brands">
+          <img src="https://via.placeholder.com/150" alt="Product 1">
+          <h3>{{ brands.name }}</h3>
+          <p>Founded: {{ brands.founded }}</p>
+          <p>Rate : {{brands.rate}}</p>
+          <a href="{{ brands.website }}">Website</a>
+        </div>
+    </div>
+    </div>

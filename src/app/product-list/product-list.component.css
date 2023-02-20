@@ -1,0 +1,29 @@
+.bg-brn{
+    background-color: #edebe9
+}
+.product-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  
+  .product {
+    width: calc(25% - 10px);
+    margin-bottom: 20px;
+    text-align: center;
+    margin-bottom: 50px;
+  }
+  
+  .product img {
+    display: block;
+    margin: 0 auto 10px;
+  }
+  
+  .product h3 {
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+  }
+  
+  .product p {
+    font-weight: bold;
+  }
