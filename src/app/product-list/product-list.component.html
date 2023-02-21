@@ -2,13 +2,17 @@
     <div class="row my-4">
         <h3>Brands of coffee</h3>
     </div>
-    <div class="product-list" >
-        <div class="product" *ngFor="let brands of coffeeBrands.brands">
-          <img src="https://via.placeholder.com/150" alt="Product 1">
-          <h3>{{ brands.name }}</h3>
-          <p>Founded: {{ brands.founded }}</p>
-          <p>Rate : {{brands.rate}}</p>
-          <a href="{{ brands.website }}">Website</a>
+    <div class="product-list">
+        <div class="card product text-wrap border" *ngFor="let brands of cofeeBrand | paginate: { itemsPerPage: 12, currentPage}" >
+            <img class="card-img-top" src="https://loremflickr.com/cache/resized/65535_51869341084_a6042a3b7a_c_500_500_nofilter.jpg" alt="Product 1">
+            <div class="card-body">
+                <h3 class="card-title">{{ brands.blend_name }}</h3>
+                <p class="card-text text-wrap stretched-link">origin: {{ brands.origin }}</p>
+                <p>Id : {{brands.id}}</p>
+            </div>
         </div>
     </div>
-    </div>
+    <div class="row text-center">
+    <pagination-controls (pageChange)="currentPage = $event" class="align-center"></pagination-controls>
+</div>
+</div>

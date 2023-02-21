@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ProductsService } from '../shared/products.service';
 
 @Component({
   selector: 'app-product-list',
@@ -7,6 +8,7 @@ import { Component } from '@angular/core';
 })
 export class ProductListComponent {
 
+  cofeeBrand: any;
  coffeeBrands:any = {
     "brands": [
       {
@@ -50,6 +52,16 @@ export class ProductListComponent {
         "rate": "$14"
       }
     ]
+  }
+  currentPage = 1;
+
+  constructor(private productservice:ProductsService){
+  }
+  ngOnInit(){
+    this.productservice.getProducts().subscribe(data => {
+      this.cofeeBrand=data;
+      console.log(data, 'api dataaaaaa');
+    })
   }
   
 }
