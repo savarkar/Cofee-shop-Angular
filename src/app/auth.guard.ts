@@ -8,29 +8,14 @@ import { ProductsService } from './shared/products.service';
 })
 export class AuthGuard implements CanActivate {
   constructor(private productservice:ProductsService, private router: Router) { }
-  canActivate(
-    route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-   // return true;
-    return this.checkUserLogin();
-  }
-  // canActivate(
-  //   next: ActivatedRouteSnapshot,
-  //   state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-  //   let url: string = state.url;
-  //   return this.checkUserLogin(next, url);
-  // }
-  checkUserLogin() {
-    if (this.productservice.isLoggedIn()) {
-      //const userRole = this.authService.getRole();
-      // if (route.data.role && route.data.role.indexOf(userRole) === -1) {
-      //   this.router.navigate(['/home']);
-      //   return false;
-      // }
-      return true;
-    }
 
-    this.router.navigate(['/product-list']);
-    return false;
+  canActivate(): boolean {
+    if (this.productservice.isLoggedIn()) {
+      this.router.navigate(['/product-list']);
+      return true;
+    } else {
+      this.router.navigate(['/login']);
+      return false;
+    }
   }
 }

@@ -15,20 +15,17 @@ export class ProductsService {
   getProducts(){
     return this.httpClient.get(this.url);
   }
-  isLogin = false;
+  private loggedIn = false;
+
   private messageSource = new BehaviorSubject<string>("");
   currentMessage = this.messageSource.asObservable();
 
   changeMessage(message: string) {
     this.messageSource.next(message)
   }
-  isLoggedIn() {
-    const loggedIn = localStorage.getItem('STATE');
-    if (loggedIn == 'true')
-      this.isLogin = true;
-    else
-      this.isLogin = false;
-    return this.isLogin;
+  isLoggedIn():boolean {
+    const loggedIn = localStorage.getItem('loguser');
+    return this.loggedIn;
   }
 
 }
