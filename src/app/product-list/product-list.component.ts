@@ -1,67 +1,28 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { ProductsService } from '../shared/products.service';
+import { Subject }    from 'rxjs';
+import { Product } from '../shared/product';
 
 @Component({
   selector: 'app-product-list',
   templateUrl: './product-list.component.html',
-  styleUrls: ['./product-list.component.css']
+  styleUrls: ['./product-list.component.css'],
 })
 export class ProductListComponent {
-
   cofeeBrand: any;
- coffeeBrands:any = {
-    "brands": [
-      {
-        "name": "Starbucks",
-        "founded": "1971",
-        "location": "Seattle, Washington",
-        "popular_products": ["Pike Place Roast", "Caramel Macchiato", "Vanilla Latte"],
-        "website": "https://www.starbucks.com/",
-        "rate": "$10"
-      },
-      {
-        "name": "Dunkin'",
-        "founded": "1950",
-        "location": "Quincy, Massachusetts",
-        "popular_products": ["Original Blend Coffee", "Dunkin' Donuts Iced Coffee", "Hot Chocolate"],
-        "website": "https://www.dunkindonuts.com/",
-        "rate": "$11"
-      },
-      {
-        "name": "Peet's Coffee",
-        "founded": "1966",
-        "location": "Emeryville, California",
-        "popular_products": ["Major Dickason's Blend", "Cafe Domingo", "Decaf Major Dickason's Blend"],
-        "website": "https://www.peets.com/",
-        "rate": "$12"
-      },
-      {
-        "name": "Lavazza",
-        "founded": "1895",
-        "location": "Turin, Italy",
-        "popular_products": ["Crema e Gusto", "Qualità Oro", "Gran Espresso"],
-        "website": "https://www.lavazza.com/",
-        "rate": "$13"
-      },
-      {
-        "name": "Illy",
-        "founded": "1933",
-        "location": "Trieste, Italy",
-        "popular_products": ["Illy Espresso", "Illy Decaf", "Illy Moka"],
-        "website": "https://www.illy.com/",
-        "rate": "$14"
-      }
-    ]
-  }
   currentPage = 1;
+  myArray = [];
 
-  constructor(private productservice:ProductsService){
-  }
-  ngOnInit(){
-    this.productservice.getProducts().subscribe(data => {
-      this.cofeeBrand=data;
+  constructor(private productservice: ProductsService) {}
+  ngOnInit() {
+    this.productservice.getProducts().subscribe((data) => {
+      this.cofeeBrand = data;
       console.log(data, 'api dataaaaaa');
-    })
+    });
   }
-  
+  @Input() product: any;
+  @Output() productAdded = new EventEmitter();
+  addToCart(product:Product) : void{
+    this.productservice.add(product);
+ }
 }
