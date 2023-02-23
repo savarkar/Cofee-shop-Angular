@@ -12,12 +12,17 @@
           <li class="nav-item">
             <a class="nav-link" href="#">About</a>
           </li> -->
-          <li class="nav-item">
-            <a class="nav-link" href="#"><i class="fa-solid fa-cart-shopping"></i> {{count}}</a>
+          <li class="nav-item" *ngIf="loggedinuser">
+            <a class="nav-link position-relative" href="#"><i class="fa-solid fa-cart-shopping"></i> 
+              <span class="position-absolute top-10 start-100 translate-middle badge rounded-pill bg-danger">
+                {{count}}
+                <span class="visually-hidden">unread messages</span>
+                </span>
+            </a>
           </li> 
-          <li class="nav-item dropdown">
-            <a *ngIf="loggedinuser" class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              <i class="fas fa-user-circle me-2"></i>welcome {{loggedinuser}}
+          <li class="nav-item dropdown" *ngIf="loggedinuser">
+            <a  class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              welcome {{loggedinuser}}
             </a>
             <ul class="dropdown-menu" aria-labelledby="userDropdown">
               <li><a class="dropdown-item" href="#">Profile</a></li>
