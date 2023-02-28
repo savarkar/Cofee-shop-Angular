@@ -11,16 +11,20 @@ export class HeaderComponent {
   public loggedinuser: any;
   count:number = 0;
   loguserName= '';
-  loguser= false;
-  constructor(private router: Router, private productservice:ProductsService) {}
-  ngOnInit() {
-  if(this.loggedinuser = localStorage.getItem('loguser')){
-    this.loguser=true;
+  user:boolean= false;
+  constructor(private router: Router, private productservice:ProductsService) {
+   
+  }
+  ngAfterViewChecked(): void {
+
     this.productservice.currentMessage.subscribe(message => {
       this.loguserName = message;
-    })
-  };
-
+      this.loggedinuser = localStorage.getItem('loguser');
+      if(this.productservice.isLoggedIn()){
+        this.user=true;
+    }
+  })
+   
     
     this.productservice.cartUpdates$.subscribe(()=>{
       this.count= this.productservice.count;
