@@ -30,8 +30,8 @@ export class ProductsService {
     this.cartList.next(cart)
   }
   isLoggedIn():boolean {
-    const loggedIn = localStorage.getItem('loguser');
-    return this.loggedIn;
+    const loggeuser = localStorage.getItem('loguser');
+    return loggeuser !== null && loggeuser !== undefined;
   }
 
 

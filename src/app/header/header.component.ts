@@ -10,13 +10,16 @@ import { ProductsService } from '../shared/products.service';
 export class HeaderComponent {
   public loggedinuser: any;
   count:number = 0;
+  loguserName= '';
+  loguser= false;
   constructor(private router: Router, private productservice:ProductsService) {}
   ngOnInit() {
-    this.loggedinuser = localStorage.getItem('loguser');
-
+  if(this.loggedinuser = localStorage.getItem('loguser')){
+    this.loguser=true;
     this.productservice.currentMessage.subscribe(message => {
-      this.loggedinuser = message;
+      this.loguserName = message;
     })
+  };
 
     
     this.productservice.cartUpdates$.subscribe(()=>{

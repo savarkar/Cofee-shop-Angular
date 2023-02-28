@@ -19,20 +19,20 @@ export class LoginComponent {
     password: new FormControl('', Validators.required),
   });
 
-  onSubmit(): void {
+  onSubmit(): boolean {
     console.log(this.myForm.value);
     this.userName = this.myForm.value.username;
-    this.submitted = false;
     if (this.myForm.valid) {
       this.router.navigate(['/product-list']);
       localStorage.setItem('loguser', this.userName);
-      this.submitted = true;
-      
+      return true;
     } else {
       alert('Invalid username or password');
+      return false;
     }
     this.productservice.changeMessage(this.userName);
   }
-  get f() { return this.myForm.controls; }
-
+  get f() {
+    return this.myForm.controls;
+  }
 }
