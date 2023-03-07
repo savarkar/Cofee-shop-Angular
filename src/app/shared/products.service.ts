@@ -58,8 +58,9 @@ export class ProductsService {
     if(item){ item.qty -- } else {
       (product as CartProduct).qty = 1;
    //   (product as CartProduct);
-      this.cartItmes.push(product)
+      this.cartItmes.slice(product)
     }
     this.cartUpdates.next(product);
+    console.log(item.qty, 'qnntityyyy')
   }
 }
