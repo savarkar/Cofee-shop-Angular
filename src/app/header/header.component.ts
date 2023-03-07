@@ -9,7 +9,7 @@ import { ProductsService } from '../shared/products.service';
 })
 export class HeaderComponent {
   public loggedinuser: any;
-  count:number = 0;
+  count:any;
   loguserName= '';
   user:boolean= false;
   constructor(private router: Router, private productservice:ProductsService) {

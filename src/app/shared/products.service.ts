@@ -8,8 +8,8 @@ import {Product,CartProduct} from '../shared/product';
 })
 export class ProductsService {
 
-  private url = 'https://random-data-api.com/api/coffee/random_coffee?size=50';
-
+//  private url = 'https://random-data-api.com/api/coffee/random_coffee?size=50';
+  private url = 'https://api.sampleapis.com/coffee/hot';
   constructor(private httpClient:HttpClient) { }
 
   getProducts(){
@@ -48,9 +48,18 @@ export class ProductsService {
    let item:CartProduct = this.cartItmes.find(item => item.id == product.id) as CartProduct ;
    if(item){ item.qty ++ } else {
      (product as CartProduct).qty = 1;
+  //   (product as CartProduct);
      this.cartItmes.push(product)
    }
    this.cartUpdates.next(product);
    //test
+  }
+  remove(product:any){   let item:CartProduct = this.cartItmes.find(item => item.id == product.id) as CartProduct ;
+    if(item){ item.qty -- } else {
+      (product as CartProduct).qty = 1;
+   //   (product as CartProduct);
+      this.cartItmes.push(product)
+    }
+    this.cartUpdates.next(product);
   }
 }

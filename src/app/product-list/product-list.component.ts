@@ -24,5 +24,6 @@ export class ProductListComponent {
   @Output() productAdded = new EventEmitter();
   addToCart(product:Product) : void{
     this.productservice.add(product);
+    console.log(product, 'dfff prooooo')
  }
 }

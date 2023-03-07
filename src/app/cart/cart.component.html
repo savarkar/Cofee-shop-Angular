@@ -1,0 +1,24 @@
+<div class="container">
+    <h2 class="my-4">View cart </h2>
+<div class="product-list col-md-4 justify-content-md-center">
+    <div class="card product text-wrap border mb-4" *ngFor="let brands of count" >
+        <img class="card-img-top" src="{{brands.image}}" style="max-height: 180px;" alt="Product 1">
+        <div class="card-body">
+            <h4 class="card-title">{{ brands.title }}</h4>
+            <p class="card-text text-wrap">origin: {{ brands.description | slice:0:10 }}</p>
+            <p>Id : {{brands.id}}</p>
+             <button class="btn btn-dark text-center" (click)="remove(brands)">Remove</button>
+        </div>
+    </div>
+</div>
+</div>
+<!-- <div *ngFor="let data of count">
+    <div class="card" style="width: 18rem;">
+        <img src="..." class="card-img-top" alt="...">
+        <div class="card-body">
+          <p class="card-text">{{data.blend_name}}</p>
+          <p class="card-text">{{data.origin}}</p>
+          <p class="card-text">{{data.variety}}</p>
+        </div>
+      </div>
+</div> -->

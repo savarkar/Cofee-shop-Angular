@@ -4,12 +4,12 @@
     </div>
     <div class="product-list">
         <div class="card product text-wrap border" *ngFor="let brands of cofeeBrand | paginate: { itemsPerPage: 12, currentPage}" >
-            <img class="card-img-top" src="https://loremflickr.com/cache/resized/65535_51869341084_a6042a3b7a_c_500_500_nofilter.jpg" alt="Product 1">
+            <img class="card-img-top" src="{{brands.image}}" style="max-height: 180px;" alt="Product 1">
             <div class="card-body">
-                <h3 class="card-title">{{ brands.blend_name }}</h3>
-                <p class="card-text text-wrap">origin: {{ brands.origin }}</p>
+                <h3 class="card-title">{{ brands.title }}</h3>
+                <p class="card-text text-wrap">origin: {{ brands.description | slice:0:10 }}</p>
                 <p>Id : {{brands.id}}</p>
-                <button class="btn btn-success text-center" (click)="addToCart(brands)">Add To Cart</button>
+                <button class="btn btn-dark text-center" (click)="addToCart(brands)">Add To Cart</button>
             </div>
         </div>
     </div>
