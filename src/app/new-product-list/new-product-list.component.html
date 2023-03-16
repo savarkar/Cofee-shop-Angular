@@ -1,0 +1,36 @@
+<div class="container mt-3">
+    <div class="row">
+        <div class="col-md-2">
+            <h5>
+                Sizes: 
+            </h5>
+             <div class="sizes-circles">
+                    <!-- <a *ngFor="let brandsize of sizes" class="rounded-link mb-3 pb-3">{{brandsize}}</a> -->
+                    <a class="rounded-link mb-3 pb-3">XS</a>
+                    <a class="rounded-link mb-3 pb-3">S</a>
+                    <a class="rounded-link mb-3 pb-3">M</a>
+                    <a class="rounded-link mb-3 pb-3">ML</a>
+                    <a class="rounded-link mb-3 pb-3">L</a>
+                    <a class="rounded-link mb-3 pb-3">XL</a>
+                    <a class="rounded-link mb-3 pb-3">XXL</a>
+                        
+            </div> 
+        </div>
+        <div class="col-md-10">
+            <div class="product-list row">
+                <div class="col-md-3 product text-wrap mb-5 text-center" *ngFor="let brands of ProductsList" >
+                    <img class="card-img-top" src="../../assets/images/pepsi.jpg" style="max-height: 180px;" alt="Product 1">
+                    <div class="card-body" style="height: 140px;">
+                        <p class="card-title text-center mt-2">{{ brands.title }}</p>
+                        <div class="divider my-1"></div>
+                        <!-- <p class="card-text text-wrap">origin: {{ brands.style | slice:0:10 }}</p> -->
+                        <p class="mt-3">$<b>{{brands.price}}</b> <br />
+                        <span class="text-secondary"> or {{brands.description}}</span> </p>
+
+                    </div>
+                    <button class="btn btn-dark text-center w-100 rounded-0" (click)="(brands)">Add To Cart</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

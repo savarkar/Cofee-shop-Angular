@@ -1,0 +1,21 @@
+.divider {
+    width: 40px;
+    margin: 9px auto;
+    margin-top: 9x;
+    background-color: #efa300;
+    height: 2px;
+}
+.rounded-link{
+    background-color: #e6e6e6;
+    border-radius: 50%;
+    padding: 5px;
+    color: #000;
+    text-decoration: none;
+    clear: both;
+    margin: 10px 0px;font-size: 14px;
+    height: 35px;width: 35px;text-align: center;
+}
+.sizes-circles{
+    display: flex;align-items: center;
+             justify-content: space-around;flex-wrap: wrap;
+}

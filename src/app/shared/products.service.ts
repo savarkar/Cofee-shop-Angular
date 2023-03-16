@@ -10,11 +10,16 @@ export class ProductsService {
 
 //  private url = 'https://random-data-api.com/api/coffee/random_coffee?size=50';
   private url = 'https://api.sampleapis.com/coffee/hot';
+  private newProducturl='/products1.json';
   constructor(private httpClient:HttpClient) { }
 
   getProducts(){
     return this.httpClient.get(this.url);
   }
+getNewProducts(){
+  return this.httpClient.get(this.newProducturl)
+}
+
   private loggedIn = false;
 
   private messageSource = new BehaviorSubject<string>("");

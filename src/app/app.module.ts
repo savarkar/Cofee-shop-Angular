@@ -14,6 +14,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { ReactiveFormsModule } from '@angular/forms';
 import { LightsComponent } from './lights/lights.component';
 import { CartComponent } from './cart/cart.component';
+import { NewProductListComponent } from './new-product-list/new-product-list.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { CartComponent } from './cart/cart.component';
     ProductListComponent,
     CheckoutComponent,
     LightsComponent,
-    CartComponent
+    CartComponent,
+    NewProductListComponent
   ],
   imports: [
     BrowserModule,
